@@ -22,8 +22,6 @@ def check_chess(x, y, movements=1):
 		if SOLID ==0 and movements<len(BOARD)**2:
 			BOARD[x][y]='ee'
 
-
-
 def possible_moves(x,y):
 	return (x>=0 and x<len(BOARD)) and (y>=0 and y<len(BOARD)) and BOARD[x][y]=='ee'
 
