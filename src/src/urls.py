@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+from chess.views import BoardView, BoardResultDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', BoardView.as_view(), name='board'),
+    path('<pk>', BoardResultDetailView.as_view(), name='detail'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
