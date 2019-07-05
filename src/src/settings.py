@@ -25,7 +25,7 @@ SECRET_KEY = '2_ej7rix=*n#x%8+tw%&b$opzku7dkqzxgm=e)$(0g$-$w(t)n'               
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['konik-szachowy-92.herokuapp.com', 'localhost:8000', '127.0.0.1']
+ALLOWED_HOSTS = ['konik-szachowy-2403.herokuapp.com', 'localhost:8000', '127.0.0.1']
 
 
 # Application definition
