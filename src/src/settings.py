@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': config('CLOUD_NAME'),
         'USER': config('CLOUD_NAME'),
         'PASSWORD': config('CLOUD_PASSWORD'),
-        'HOST': 'packy.db.elephantsql.com',
+        'HOST': 'rogue.db.elephantsql.com',
         'PORT': '5432',
     }
  }
