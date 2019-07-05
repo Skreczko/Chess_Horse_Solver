@@ -17,13 +17,14 @@ class FormTestCase(TestCase):
 
 class ModelTestCase(TestCase):
 	board = [
-		[3,32,5,12,23,26],
-		[6,11,2,25,34,13],
-		[31,4,33,22,27,24],
-		[10,7,18,1,14,35],
-		[19,30,9,16,21,28],
-		[8,17,20,29,36,15]
+		[1, 20, 3, 18, 5, 22],
+		[36, 11, 28, 21, 30, 17],
+		[27, 2, 19, 4, 23, 6],
+		[12, 35, 10, 29, 16, 31],
+		[9, 26, 33, 14, 7, 24],
+		[34, 13, 8, 25, 32, 15]
 	]
+
 	def setUp(self):
 		Board.objects.create(board_status=self.board).save()
 
@@ -38,12 +39,12 @@ class ModelTestCase(TestCase):
 
 class ViewTestCase(TestCase):
 	board = [
-		[3,32,5,12,23,26],
-		[6,11,2,25,34,13],
-		[31,4,33,22,27,24],
-		[10,7,18,1,14,35],
-		[19,30,9,16,21,28],
-		[8,17,20,29,36,15]
+		[1, 20, 3, 18, 5, 22],
+		[36, 11, 28, 21, 30, 17],
+		[27, 2, 19, 4, 23, 6],
+		[12, 35, 10, 29, 16, 31],
+		[9, 26, 33, 14, 7, 24],
+		[34, 13, 8, 25, 32, 15]
 	]
 	def setUp(self):
 		Board.objects.create(board_status=self.board).save()
@@ -63,12 +64,13 @@ class ViewTestCase(TestCase):
 
 	def test_board_view_post_follow(self):
 		data = {
-			'point': "2,2"
+			'point': "0,0"
 		}
 		url = reverse('board')
 		response = self.client.post(url, data=data, follow=True)
 		self.assertEqual(response.status_code, 200)
-		self.assertEqual(response.context['x2y2'], 1)
+		self.assertEqual(response.context['x0y0'], 1)
+		self.assertEqual(response.context['x1y0'], 36)
 		self.assertEqual(Board.objects.all().count(), 2)
 
 
