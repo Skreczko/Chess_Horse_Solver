@@ -20,11 +20,11 @@ class BoardView(FormMixin, View):
 			return self.form_invalid(form)
 
 	def get(self, request, *args, **kwargs):
-		return render(request, 'base5x5.html')															#range board
+		return render(request, 'base6x6.html')															#range board
 
 	def form_valid(self, form):
 		x, y = form.cleaned_data.get('point').split(',')
-		Board.objects.create(board_status=get_chess_solution(int(x), int(y), 5)).save()					#range board
+		Board.objects.create(board_status=get_chess_solution(int(x), int(y), 6)).save()					#range board
 		return super().form_valid(form)
 
 	def get_context_data(self, **kwargs):
@@ -37,12 +37,12 @@ class BoardView(FormMixin, View):
 
 class BoardResultDetailView(DetailView):
 	model = Board
-	template_name = 'base5x5.html'																		#range board
+	template_name = 'base6x6.html'																		#range board
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		for x in range(5):																				#range board
-			for y in range(5):																			#range board
+		for x in range(6):																				#range board
+			for y in range(6):																			#range board
 				context['x{}y{}'.format(x,y)] = Board.objects.all().last().board_status[x][y]
 		context['my_context'] = 'True'
 		return context
