@@ -25,7 +25,7 @@ SECRET_KEY = '2_ej7rix=*n#x%8+tw%&b$opzku7dkqzxgm=e)$(0g$-$w(t)n'               
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['konik-szachowy-92.herokuapp.com', 'localhost:8000', '127.0.0.1']
 
 
 # Application definition
@@ -82,17 +82,29 @@ WSGI_APPLICATION = 'src.wsgi.application'
 #     }
 # }
 
+"""     Database must be postgresql because in models Array Field is used.       """
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('POSTGRESQL_NAME'),
+#         'USER': 'postgres',
+#         'PASSWORD': config('POSTGRESQL_PASSWORD'),
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRESQL_NAME'),
-        'USER': 'postgres',
-        'PASSWORD': config('POSTGRESQL_PASSWORD'),
-        'HOST': '127.0.0.1',
+        'NAME': config('CLOUD_NAME'),
+        'USER': config('CLOUD_NAME'),
+        'PASSWORD': config('CLOUD_PASSWORD'),
+        'HOST': 'packy.db.elephantsql.com',
         'PORT': '5432',
     }
-}
-
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
